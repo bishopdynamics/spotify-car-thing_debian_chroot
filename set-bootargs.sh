@@ -17,7 +17,6 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-
 DIR=$(dirname $(realpath $0))
 UPDTOOL="$DIR/amlogic-usb-tool"
 
@@ -33,16 +32,12 @@ $UPDTOOL bulkcmd 'setenv initargs ${initargs} console=ttyS0,115200n8'  # setting
 $UPDTOOL bulkcmd 'setenv initargs ${initargs} no_console_suspend'
 $UPDTOOL bulkcmd 'setenv initargs ${initargs} earlycon=aml-uart,0xff803000'  # make sure console is available as early as possible in boot process
 
-
 # Now setup the root partition, here we have the important stuff abstracted to variables
 
 # Partition Number
 #   system_a: 14
 #   system_b: 15
 #   data: 18
-
-# we are currently using the data partition for our experiments, because it is 2GB, compared to the 512MB system parititions
-#   also, this lets us leave the original system (mostly) alone for now
 
 PART_NUM="14"  # partition number
 PART_TYPE="ext4"  # filesystem of partition
