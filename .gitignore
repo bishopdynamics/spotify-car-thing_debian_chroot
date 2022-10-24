@@ -1,0 +1,2 @@
+# where we build our root system using debootstrap
+root/
