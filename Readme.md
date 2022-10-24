@@ -17,6 +17,8 @@ This project is just a starting point, and is not particularly useful as-is
 
 ## Usage
 
+This needs to be done from Debian or Ubuntu Linux x86_64, with the `multistrap` and `android-sdk-platform-tools` packages installed. 
+
 1. Before using this, you need to follow the [instructions here](https://github.com/frederic/superbird-bulkcmd) to setup your device to always boot in usb burning mode. 
 2. After that, power on your device and run `./boot-adb-kernel.sh` to boot up with adb enabled.
    1. this change is not persistent
