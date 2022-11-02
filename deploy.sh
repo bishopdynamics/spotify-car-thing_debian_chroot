@@ -3,9 +3,9 @@
 # local image file, where we built our new root filesystem
 IMAGE_FILE="debian-filesystem.img"
 
-# only works on x86_64 Linux
-if [ "$(uname -s)" != "Linux" ] || [ "$(uname -m)" != "x86_64" ]; then
-    echo "This script is only compatible with x86_64 Linux"
+# only works on Linux
+if [ "$(uname -s)" != "Linux" ]; then
+    echo "This script is only compatible with Linux"
     echo "  This system is: $(uname -s) $(uname -m)"
     exit 1
 fi

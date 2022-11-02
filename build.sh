@@ -6,9 +6,9 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-# only works on x86_64 Linux
-if [ "$(uname -s)" != "Linux" ] || [ "$(uname -m)" != "x86_64" ]; then
-    echo "This script is only compatible with x86_64 Linux"
+# only works on  Linux
+if [ "$(uname -s)" != "Linux" ]; then
+    echo "This script is only compatible with Linux"
     echo "  This system is: $(uname -s) $(uname -m)"
     exit 1
 fi
@@ -27,7 +27,7 @@ LOCAL_ROOT="root"
 LOCAL_FILE="debian-filesystem.img"
 
 mountpoint "$LOCAL_ROOT" && umount "$LOCAL_ROOT"
-mkdir "$LOCAL_ROOT"
+
 if [ -f "$LOCAL_FILE" ]; then
     rm "$LOCAL_FILE"
 fi
@@ -39,6 +39,7 @@ dd if=/dev/zero of=$LOCAL_FILE bs=1M count=1792
 echo "formatting $LOCAL_FILE"
 mkfs.ext4 "$LOCAL_FILE"
 
+mkdir -p "$LOCAL_ROOT"
 mount "$LOCAL_FILE" "$LOCAL_ROOT"
 
 echo "Building image for $ARCH in: $LOCAL_ROOT"

@@ -65,6 +65,13 @@ mkdir -p /debian-root
 mount /var/debian-filesystem.img $ROOT
 
 copy_from_local "/etc/passwd"
+copy_from_local "/etc/resolv.conf"
+
+
+# copy /var/xorg.conf if available
+if [ -f "/var/xorg.conf" ]; then
+    cp /var/xorg.conf "${ROOT}/etc/X11/xorg.conf"
+fi
 
 echo "bind mounting..."
 
@@ -81,7 +88,6 @@ mount_tmp "var"
 # make dbus work
 mkdir -p "${ROOT}/run/dbus"
 mount -o bind "/var/run/dbus" "${ROOT}/run/dbus"
-# mount_bind "run/dbus"
 
 # need to create /var/log
 mkdir "${ROOT}/var/log"
