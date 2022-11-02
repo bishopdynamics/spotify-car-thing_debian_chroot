@@ -27,7 +27,7 @@ LOCAL_ROOT="root"
 LOCAL_FILE="debian-filesystem.img"
 
 mountpoint "$LOCAL_ROOT" && umount "$LOCAL_ROOT"
-
+mkdir "$LOCAL_ROOT"
 if [ -f "$LOCAL_FILE" ]; then
     rm "$LOCAL_FILE"
 fi
