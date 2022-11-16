@@ -21,6 +21,7 @@ unmount_point "dev/pts"
 unmount_point "dev"
 unmount_point "tmp"
 unmount_point "run/dbus"
+unmount_point "run/udev/data"
 unmount_point "run"
 unmount_point "var"
 

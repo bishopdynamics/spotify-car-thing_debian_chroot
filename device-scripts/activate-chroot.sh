@@ -89,6 +89,11 @@ mount_tmp "var"
 mkdir -p "${ROOT}/run/dbus"
 mount -o bind "/var/run/dbus" "${ROOT}/run/dbus"
 
+# make udev work
+# https://unix.stackexchange.com/questions/205020/disk-id-in-chroot-jail
+mkdir -p "${ROOT}/run/udev/data"
+mount -o bind "/var/run/udev/data" "${ROOT}/run/udev/data"
+
 # need to create /var/log
 mkdir "${ROOT}/var/log"
 
